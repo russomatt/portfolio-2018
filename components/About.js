@@ -6,10 +6,6 @@ export default class About extends React.Component {
         super(props);
         this.state = { open : false }
     }
-    // openClose = () => {
-    //     var openState = !this.state.open;
-    //     this.setState({ open : openState });
-    // }
     render() {
 
         return (
