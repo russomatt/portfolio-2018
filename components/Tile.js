@@ -7,15 +7,10 @@ export default class App extends React.Component {
         super(props);
     }
 
-    tileHover = () => {
-        this.style.background = 'red';
-    }
-
     render() {
 
         return (
             <div onClick={ this.props.onClick }
-                onMouseEnter={ this.tileHover }
                 data-index={ this.props.index }
                 data-type={ this.props.type }
                 className="tile"

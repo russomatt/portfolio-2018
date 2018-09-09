@@ -4,8 +4,6 @@ import data from '../data/projects.json';
 import Tile from './Tile.js';
 import About from './About.js';
 import Project from './Project.js';
-import Canvas from './Canvas.js';
-
 
 export default class App extends React.Component {
     constructor(props) {
