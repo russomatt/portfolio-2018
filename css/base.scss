@@ -227,13 +227,13 @@ a {
             left: -51%;
             filter: grayscale(1) contrast(2);
             opacity: .15;
-            overflow: inherit;
+            overflow: hidden;
 
             img {
-                // width: 100%;
-                // height: auto;
-                height: 100%;
                 width: auto;
+                height: 120%;
+                position: absolute;
+                top: 0;
             }
         }
 
