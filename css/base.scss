@@ -299,7 +299,7 @@ a {
     cursor: pointer;
     transition: 0.25s;
     background: #fff;
-    height: 28em;
+    height: 27em;
 
     background: transparent;
 
@@ -365,7 +365,7 @@ a {
         }
 
         &.loading {
-            background: linear-gradient(120deg, #e4e4e4 40%, #848484);
+            background: linear-gradient(120deg, #e4e4e4 40%, #b8bfd2);
             opacity: .3;
             filter: blur(3px);
         }
