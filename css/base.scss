@@ -24,14 +24,17 @@
 
 $mobile-size : 520px;
 $tablet-size : 940px;
-$accent-color : #0037ff;
+// $accent-color : #0037ff;
+$accent-color : #007AFF;
 $second-color : #ffde00;
+$text-color : #12457D;
 
 body {
-	background: #fff;
+    background: rgb(254, 248, 226);
 	font-family: 'HelveticaNeueLTStd', 'Helvetica Neue';
 	font-weight: bold;
     padding-bottom: 1em;
+    color: $text-color;
 }
 .canvas {
     background: rgba(0,0,255,.9);
@@ -51,7 +54,6 @@ body {
 #app {
     width: 100%;
     height: 100%;
-    padding: 2em 5em;
     padding-bottom: 6em;
     display: table;
     max-width: 1600px;
@@ -97,16 +99,33 @@ a {
         font-weight: 300;
         padding-bottom: 0.75em;
         display: inline-block;
-        // color: #000;
 
         &.name {
             font-weight: 900;
             font-size: 1.25em;
         }
-        &.about-label {
+        &.about-label,
+        &.blog-label {
             font-size: 1em;
             cursor: pointer;
             letter-spacing: 0.1em;
+            color: $text-color;
+
+            hr {
+                border: none;
+                border-bottom: 0.6em solid $accent-color;
+                opacity: 0.25;
+                width: 0;
+                transition: .25s;
+                margin-top: -0.65em;
+                float: left;
+                position: absolute;
+                bottom: -.5em;
+                left: 0;
+            }
+            &:hover hr {
+                width: 105%;
+            }
         }
     }
     hr {
@@ -158,8 +177,26 @@ a {
         }
     }
 }
+.featured-container {
+    // background: rgba(254, 247, 223, 0.78);
+    background: rgb(254, 248, 226);
+    display: table;
+    width: 100%;
+    padding: 2em 5em 0;
+    position: relative;
+
+    // .featured-divider {
+    //     position: absolute;
+    //     left: 0;
+    //     right: 0;
+    //     height: 20em;
+    //     bottom: -19em;
+    // }
+}
 .featured {
-    margin-bottom: 5em;
+    margin-top: 4em;
+    margin-bottom: 2em;
+    padding-left: 33.3333%;
 
     .tile-container {
         height: 25.5em;
@@ -167,6 +204,7 @@ a {
         border: none;
         background: transparent;
         padding-top: 4em;
+
     }
     .tile {
         height: 100%;
@@ -193,11 +231,14 @@ a {
             position: absolute;
             right: initial;
             transition: 0.4s;
+            transition: opacity .2s, filter .4s;
 
-            top: 3.5em;
-            bottom: 0;
-            width: 66.6%;
-            left: 33.3%;
+            top: -2.5em;
+            bottom: 5em;
+            width: 66%;
+            left: -51%;
+            filter: grayscale(1) contrast(2);
+            opacity: .15;
         }
 
         .tile-info {
@@ -211,6 +252,7 @@ a {
             padding: 0;
             width: 100%;
             left: 0;
+            top: 6em;
         }
         .tile-role {
             border-top: 2px solid;
@@ -229,7 +271,7 @@ a {
             line-height: 1.15em;
             font-weight: 900;
             transition: 0;
-            font-size: 5.5em;
+            font-size: 4.5em;
 
             hr {
                 border-width: .45em;
@@ -243,7 +285,13 @@ a {
 
         .tile-image {
             opacity: .7;
+            transition: 1.2s, opacity 1s, filter 1s;
+            filter: grayscale(0.2) contrast(1);
+            transform: translate(.35em, -.15em);
 
+        }
+        .tile-info {
+            transform: translate(-.35em, .15em);
         }
     }
 
@@ -297,14 +345,21 @@ a {
         right: 0;
         transition: 0.2s;
         opacity: .8;
+        background: #ccc;
 
+        .tile-image-screen {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+        }
     }
 
     .tile-info {
         position: absolute;
-        bottom: 0;
+        bottom: 1.5em;
         left: 0;
-        padding-bottom: 9px;
         width: 100%;
         min-height: 6.65em;
         background: transparent;
@@ -414,6 +469,7 @@ a {
         bottom: 0;
         top: 4em;
         max-width: 900px;
+        padding-bottom: 5em;
     }
     .about-header{
         display: table;
@@ -556,6 +612,7 @@ a {
         opacity: 0;
         transition: .2s;
         transform: scale(.99);
+        background: rgb(255, 255, 255);
 	}
     .project-header {
         height: 36em;
@@ -587,13 +644,13 @@ a {
         margin-bottom: 2em;
     }
     .project-copy {
-        background: #fff;
+        background: rgb(255, 255, 255);
         position: relative;
         z-index: 1;
         margin-top: -26em;
         display: inline-block;
         border-top: 10px solid;
-        padding: 1em 2em 2em 4em;
+        padding: 1em 3em 2em 4em;
         min-height: 27.5em;
         margin-bottom: 2em;
         max-width: 95%;
@@ -633,6 +690,7 @@ a {
             font-weight: 100;
             line-height: 1.35;
             margin-top: 1.5em;
+            color: #000;
         }
     }
     .project-back {
@@ -665,6 +723,17 @@ a {
         }
 	}
 }
+
+.tiles {
+    padding: 1em 5em 2em;
+    display: table;
+    width: 100%;
+
+
+    .tile-role {
+        border-width: 5px;
+    }
+}
 @media (max-width: 1150px) {
     .featured {
 
@@ -680,7 +749,8 @@ a {
     }
 }
 @media (max-width: $tablet-size) {
-    #app {
+    .featured-container,
+    .tiles {
         padding: 2em 1em;
     }
     .about {
@@ -707,16 +777,31 @@ a {
         .tile {
 
             .tile-info {
+                left: -40%;
+                width: 140%;
 
                 h1 {
-                    font-size: 3.95em;
+                    font-size: 3.5em;
+                }
+            }
+        }
+        .tile-container {
+
+            &:hover {
+
+                .tile-info {
+                    // left: -40.25%;
                 }
             }
         }
     }
 }
 @media (max-width: $mobile-size) {
-    #app {
+    .row {
+        margin: 0;
+    }
+    .featured-container,
+    .tiles {
         padding: 1em 0;
     }
     .about {
@@ -774,12 +859,25 @@ a {
         }
     }
     .featured {
-        margin-bottom: 0;
+        margin: 1em 0;
         padding: 0;
 
         .tile-container {
-            height: 18.5em;
-            margin-bottom: 3em;
+            height: 15em;
+            margin-bottom: 0;
+
+            &:hover {
+                // .tile-image {
+                //     bottom: 3.65em;
+                //     top: 0.15em;
+                //     left: 2.25%;
+                // }
+                // .tile-info {
+                //     left: 2.25%;
+                //     bottom: 0.15em;
+                //     top: initial;
+                // }
+            }
         }
         .featured-divider {
             padding-top: 2em;
@@ -788,26 +886,35 @@ a {
             font-size: 0.75em;
 
             .tile-image {
-                width: 64%;
+                width: 60%;
+                bottom: 3.75em;
+                top: 0em;
+                left: 2%;
             }
             .tile-info {
                 width: 95%;
                 left: 2.5%;
-                top: initial!important;
-                bottom: 2em;
+                bottom: 0;
+                top: initial;
+                padding-left: 4%;
 
                 &:hover {
                     bottom: 2.3em;
                 }
                 h1 {
-                    font-size: 2.65em;
+                    font-size: 3em;
+                }
+                .tile-role {
+                    width: 96%;
+                    left: 4%;
+                    bottom: 9em;
                 }
             }
         }
     }
     .tile-container {
         height: 18em;
-        margin-bottom: 2em;
+        margin-bottom: 1em;
     }
     .tile {
 

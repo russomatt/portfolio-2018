@@ -33,11 +33,6 @@ export default class Canvas extends React.Component {
         var w2 = getRandomInt(15);
         var h2 = getRandomInt(15);
 
-
-        // console.log(xcoord);
-        // console.log(ycoord);
-
-
         var rect = {
           x: xcoord,
           y: ycoord,
@@ -99,11 +94,6 @@ export default class Canvas extends React.Component {
 
         return (
             <div id="canvas-container" className="canvas" onClick={ this.drawCanvas }>
-                {/*<canvas id="canvas" 
-                    width={ this.state.width }
-                    height={ this.state.height }
-                    onClick={ this.drawBall }>
-                </canvas> */}
                 { this.state.canvasNode }
             </div>
         );

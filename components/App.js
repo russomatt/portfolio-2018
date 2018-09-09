@@ -14,6 +14,7 @@ export default class App extends React.Component {
         this.state = { projectOpen: false,
                         selectetProject: null,
                         filteredType: "all",
+                        featuredNodes: null,
                         nodes: null,
                         aboutOpen: false}
 
@@ -28,27 +29,45 @@ export default class App extends React.Component {
 
         var that = this;
 
-        var tileNodes = data.projects.map( function(project, i) {
-                return (
-                    <div className={ i > 2 ? 'col-xs-12 col-sm-6 col-md-4 col-lg-4' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12 featured' } key={'tile-' + i}>
-                        <div className='tile-container'>
-                            <Tile
-                                onClick={ that.openProject }
-                                subTitle={ project.project.subTitle }
-                                title={ project.project.title }
-                                role={ project.project.role }
-                                index={ i }
-                            />
-                        </div>
-                        { i == 2 &&
-                            <div className='featured-divider'>
+        var featuredNodes = data.projects.map( function(project, i) {
+
+                if ( i <= 2) {
+                    return (
+                        <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12 featured' key={'tile-' + i}>
+                            <div className='tile-container'>
+                                <Tile
+                                    onClick={ that.openProject }
+                                    subTitle={ project.project.subTitle }
+                                    title={ project.project.title }
+                                    role={ project.project.role }
+                                    index={ i }
+                                />
                             </div>
-                        }
-                    </div>
-                )
+                        </div>
+                    );
+                } 
             });
 
-        this.setState({nodes: tileNodes, filteredType: "all"})
+        var tileNodes = data.projects.map( function(project, i) {
+
+                if ( i > 2) {
+                    return (
+                        <div className='col-xs-12 col-sm-6 col-md-4 col-lg-4' key={'tile-' + i}>
+                            <div className='tile-container'>
+                                <Tile
+                                    onClick={ that.openProject }
+                                    subTitle={ project.project.subTitle }
+                                    title={ project.project.title }
+                                    role={ project.project.role }
+                                    index={ i }
+                                />
+                            </div>
+                        </div>
+                    );
+                }
+            });
+
+        this.setState({featuredNodes: featuredNodes, nodes: tileNodes, filteredType: "all"})
 
     }
 
@@ -114,49 +133,66 @@ export default class App extends React.Component {
 
         return (
             <div className={ this.state.projectOpen ? 'app-container app-overflow' : 'app-container'}>
-                <div className="filters">
-                    <div className="header">
-                        <span className="col-xs-6 col-sm-4 name">russo, matt</span>
-                        <span id="about" className="col-xs-6 col-sm-8">
-                            <span className="about-label" onClick={ this.toggleAbout }>
-                                about
-                            </span>
-                        </span>
-                        <hr/>
+                <div className="featured-container">
+                    <div className="row">
+                        <div className="filters">
+                            <div className="header">
+                                <span className="col-xs-12 col-sm-4 name">russo, matt</span>
+                                <span id="about" className="col-xs-6 col-sm-4">
+                                    <span className="about-label" onClick={ this.toggleAbout }>
+                                        about
+                                    </span>
+                                </span>
+                                <span className="col-xs-6 col-sm-4">
+                                    <a href="http://blog.russomatt.com" target="_blank">
+                                        <span className="blog-label">
+                                                blog
+                                                <hr/>
+                                        </span>
+                                    </a>
+                                </span>
+                                <hr/>
+                            </div>
+                            <div className="col-xs-12 col-md-4">
+                                <span onClick={ this.getTileNodes }
+                                    data-type="all"
+                                    className={ this.state.filteredType == 'all' ? 'filter selected-filter' : 'filter' }>
+                                    all
+                                    <hr
+                                        data-type="all"
+                                    />
+                                </span>
+                            </div>
+                            <div className="col-xs-6 col-md-4">
+                                <span onClick={ this.filterTiles }
+                                    data-type="interactive"
+                                    className={ this.state.filteredType == 'interactive' ? 'filter selected-filter' : 'filter'}>
+                                    interactive
+                                    <hr
+                                        data-type="interactive"
+                                    />
+                                </span>
+                            </div>
+                            <div className="col-xs-6 col-md-4">
+                                <span onClick={ this.filterTiles }
+                                    data-type="print"
+                                    className={ this.state.filteredType == 'print' ? 'filter selected-filter' : 'filter'}>
+                                    print
+                                    <hr
+                                        data-type="print"
+                                    />
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-xs-12 col-md-4">
-                        <span onClick={ this.getTileNodes }
-                            data-type="all"
-                            className={ this.state.filteredType == 'all' ? 'filter selected-filter' : 'filter' }>
-                            all
-                            <hr
-                                data-type="all"
-                            />
-                        </span>
-                    </div>
-                    <div className="col-xs-6 col-md-4">
-                        <span onClick={ this.filterTiles }
-                            data-type="interactive"
-                            className={ this.state.filteredType == 'interactive' ? 'filter selected-filter' : 'filter'}>
-                            interactive
-                            <hr
-                                data-type="interactive"
-                            />
-                        </span>
-                    </div>
-                    <div className="col-xs-6 col-md-4">
-                        <span onClick={ this.filterTiles }
-                            data-type="print"
-                            className={ this.state.filteredType == 'print' ? 'filter selected-filter' : 'filter'}>
-                            print
-                            <hr
-                                data-type="print"
-                            />
-                        </span>
-                    </div>
-
+                    { this.state.filteredType ==  'all' && this.state.featuredNodes }
+                    <div className="featured-divider" />
                 </div>
-                { this.state.nodes }
+                <div className="tiles">
+                    <div className="row">
+                        { this.state.nodes }
+                    </div>
+                </div>
                 { this.state.projectOpen &&
                     <Project
                         closeProject={ this.closeProject }
