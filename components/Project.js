@@ -4,12 +4,17 @@ import React from 'react';
 export default class Project extends React.Component {
     constructor(props) {
         super(props);
+        this.state = { headerLoaded : false };
     }
 
     componentDidMount() {
         setTimeout(function(){
             document.getElementById('openproject').className = 'project project2'
         }, 100);
+    }
+
+    headerLoaded = () => {
+        this.setState({ headerLoaded : true });
     }
 
     render() {
@@ -59,7 +64,15 @@ export default class Project extends React.Component {
                 </div>
                 <div className="project-container">
                     <div className="">
-                        <div className="project-header" style={ {background: "url('" + this.props.project.bg + "')"} }>
+                        <div className="project-header" 
+                        style={ { background : "linear-gradient(120deg," + 
+                            this.props.project.headerColors[0] + "," +
+                            this.props.project.headerColors[1] + ")" } }
+                        >
+                            <img src={ this.props.project.bg }
+                                className={ this.state.headerLoaded ? "loaded" : "loading" }
+                                onLoad={ this.headerLoaded }
+                            />
                         </div>
                     </div>
                     <div className="project-copy">

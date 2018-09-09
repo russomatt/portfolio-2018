@@ -20,7 +20,8 @@ export default class App extends React.Component {
                 />
                 <TileImage
                     index={ this.props.index }
-                    url={ 'url(img/tile' + (this.props.index + 1) + '.png)' }
+                    // url={ 'url(img/tile' + (this.props.index + 1) + '.png)' }
+                    url={ 'img/tile' + (this.props.index + 1) + '.png' }
                 />
                 <div className="tile-info">
                     <div className="tile-role">

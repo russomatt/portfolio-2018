@@ -223,11 +223,6 @@ a {
         .tile-image {
             background-repeat: no-repeat!important;
             background-size: cover!important;
-            width: 58.3%;
-            top: -2.5em;
-            bottom: 8.5em;
-            left: 0;
-            opacity: 0.4;
             position: absolute;
             right: initial;
             transition: 0.4s;
@@ -239,6 +234,12 @@ a {
             left: -51%;
             filter: grayscale(1) contrast(2);
             opacity: .15;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
         }
 
         .tile-info {
@@ -345,8 +346,34 @@ a {
         right: 0;
         transition: 0.2s;
         opacity: .8;
-        background: #ccc;
+        // background: #ccc;
+        overflow: hidden;
 
+        img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: auto;
+            height: 100%;
+            transition: .5s;
+
+            &.loading {
+                opacity: 0;
+                transform: scale(.95);
+            }
+            &.loaded {
+
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        &.loading {
+            background: linear-gradient(120deg, #e4e4e4 40%, #848484);
+            opacity: .3;
+            filter: blur(3px);
+        }
         .tile-image-screen {
             position: absolute;
             left: 0;
@@ -616,11 +643,34 @@ a {
 	}
     .project-header {
         height: 36em;
-        background: #ccc;
         position: relative;
         background-repeat: no-repeat!important;
         background-size: cover!important;
         min-width: 45%;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            width: 100%;
+            height: auto;
+            transition: .5s;
+
+            &.loading {
+                opacity: 0;
+                transform: scale(.9);
+                filter: blur(1em);
+            }
+            &.loaded {
+                opacity: 1;
+                filter: blur(0);
+                transform: scale(1);
+            }
+
+        }
 
         h1 {
             margin: 0;
