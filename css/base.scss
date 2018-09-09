@@ -28,7 +28,7 @@ $tablet-size : 940px;
 $accent-color : #007AFF;
 $second-color : #ffde00;
 $text-color : #12457D;
-
+$max-width : 1350px;
 body {
     background: rgb(254, 248, 226);
 	font-family: 'HelveticaNeueLTStd', 'Helvetica Neue';
@@ -178,25 +178,18 @@ a {
     }
 }
 .featured-container {
-    // background: rgba(254, 247, 223, 0.78);
     background: rgb(254, 248, 226);
     display: table;
     width: 100%;
     padding: 2em 5em 0;
     position: relative;
 
-    // .featured-divider {
-    //     position: absolute;
-    //     left: 0;
-    //     right: 0;
-    //     height: 20em;
-    //     bottom: -19em;
-    // }
 }
 .featured {
     margin-top: 4em;
     margin-bottom: 2em;
     padding-left: 33.3333%;
+    max-width: $max-width;
 
     .tile-container {
         height: 25.5em;
@@ -354,8 +347,8 @@ a {
             left: 0;
             right: 0;
             bottom: 0;
-            width: auto;
-            height: 100%;
+            width: 100%;
+            height: auto;
             transition: .5s;
 
             &.loading {
@@ -640,6 +633,7 @@ a {
         transition: .2s;
         transform: scale(.99);
         background: rgb(255, 255, 255);
+        max-width: $max-width;
 	}
     .project-header {
         height: 36em;
@@ -779,9 +773,21 @@ a {
     display: table;
     width: 100%;
 
-
+    .row {
+        max-width: $max-width;
+    }
     .tile-role {
         border-width: 5px;
+    }
+}
+@media (max-width: 1250px) {
+    .project {
+        .project-header {
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
     }
 }
 @media (max-width: 1150px) {
