@@ -227,11 +227,13 @@ a {
             left: -51%;
             filter: grayscale(1) contrast(2);
             opacity: .15;
-            overflow: hidden;
+            overflow: inherit;
 
             img {
-                width: 100%;
-                height: auto;
+                // width: 100%;
+                // height: auto;
+                height: 100%;
+                width: auto;
             }
         }
 
@@ -801,6 +803,11 @@ a {
                     font-size: 4.5em;
                 }
             }
+        }
+    }
+    .tiles {
+        .tile-container {
+            height: 22em;
         }
     }
 }
