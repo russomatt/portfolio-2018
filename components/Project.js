@@ -22,17 +22,6 @@ export default class Project extends React.Component {
 
         }) : "";
 
-        // var vidNodes = this.props.project.vid != undefined ?
-        // this.props.data.project.vid.map( function(vid, i){
-        //     if(that.props.data) {
-
-        //         ret urn (
-        //             <div key={"vid-"+i} className="col-xs-12 col-sm-10 col-sm-offset-1 project-video">
-        //                 <iframe src={ vid } frameborder="0" allowfullscreen></iframe>
-        //             </div> );
-        //     }
-        // }) : "";
-
         var that = this;
 
         var parseDescription = function() {
@@ -61,12 +50,6 @@ export default class Project extends React.Component {
         }
         var descArr = parseDescription();
 
-
-        // setTimeout(function(){
-        //     document.getElementById('openproject').className = 'project project2'
-        // }, 100);
-        // var title = this.props.project.title + ' ' + this.props.project.subTitle;
-
         return (
             <div id="openproject" className="project">
                 <div onClick={ this.props.closeProject } className="project-screen"/>
@@ -77,17 +60,6 @@ export default class Project extends React.Component {
                 <div className="project-container">
                     <div className="">
                         <div className="project-header" style={ {background: "url('" + this.props.project.bg + "')"} }>
-                            {/*<div className="project-title">
-                                <h1>
-                                    { this.props.project.title }
-                                </h1>
-                                <h1>
-                                    { this.props.project.subTitle }
-                                </h1>
-                                <p>
-                                 { descArr }
-                                </p>
-                            </div>*/}
                         </div>
                     </div>
                     <div className="project-copy">
@@ -114,10 +86,6 @@ export default class Project extends React.Component {
                             </span>
                         </div>
                     </div>
-{/*                    <div className="project-text">
-                        { descArr }
-                    </div>
-*/}
                     { imgNodes }
                 </div>
             </div>

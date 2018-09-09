@@ -1,15 +1,21 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
+import TileImage from './TileImage.js';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
     }
 
+    tileHover = () => {
+        this.style.background = 'red';
+    }
+
     render() {
 
         return (
             <div onClick={ this.props.onClick }
+                onMouseEnter={ this.tileHover }
                 data-index={ this.props.index }
                 data-type={ this.props.type }
                 className="tile"
@@ -17,8 +23,10 @@ export default class App extends React.Component {
                 <div className="tile-screen"
                     data-index={ this.props.index }
                 />
-                <div className="tile-image" style={ {background: 'url(img/tile' + (this.props.index + 1) + '.png)'}}>
-                </div>
+                <TileImage
+                    index={ this.props.index }
+                    url={ 'url(img/tile' + (this.props.index + 1) + '.png)' }
+                />
                 <div className="tile-info">
                     <div className="tile-role">
                         { this.props.role }
