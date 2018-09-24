@@ -40,10 +40,10 @@ export default class About extends React.Component {
                     </div>
                     <div className="col-xs-12 col-md-12 col-lg-8 about-text">
                         <p>
-                        I am a designer/developer working in both pixels and front-end code, splitting my time between Amsterdam and Düsseldorf. I’m passionate about interactive experiences, data visualizations, and intuitive communication. 
+                        I am a designer/developer working in both pixels and front-end code, splitting my time between Amsterdam and Düsseldorf, in the process of moving back to the US. I’m passionate about interactive experiences, data visualizations, and intuitive communication.
                         <br/>
                         <br/>
-                        I currently am finalizing my master’s degree in Computer Science & Information Engineering at Rhine Waal University. Before that, I worked as a designer/developer at <a href="http://bevspot.com" target="blank_">BevSpot</a> in Boston. My responsibilities included anything from implementing UI improvements that enhance customers' experiences to full-on new feature designs and standalone tools.
+                        I currently am finalizing my master’s degree in Information Engineering & Computer Science at Rhine Waal University. Before that, I worked as a designer/developer at <a href="http://bevspot.com" target="blank_">BevSpot</a> in Boston. My responsibilities included anything from implementing UI improvements that enhance customers' experiences to full-on new feature designs and standalone tools.
                         <br/>
                         <br/>
                         In 2016, I graduated with a BFA in Graphic Design & Interactive Media from Northeastern University. During my studies there, I completed a co-op as a junior front-end developer at <a href="http://yeti.co" target="blank_">Yeti</a> in San Francisco and on the digital creative team at <a href="http://wunderman.de" target="blank_">Wunderman</a> in Frankfurt.
